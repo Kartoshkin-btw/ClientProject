@@ -1,0 +1,50 @@
+<div [ngClass]="{container:true}">
+  <h1>Рестораны</h1>
+  <ul>
+    <li *ngFor="let org of listOrganization">
+      <a [ngClass]="{catalog:true}" [routerLink]="['/pickpoints', org.id]">
+        <div [ngClass]="{imageContainer:true}">
+          <div [ngClass]="{imageWrapper:true}">
+            <div [ngClass]="{imageWrapperCommon:true}">
+              <img [ngClass]="{image:true}" src="{{org.picture}}" />
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="{textItem:true}">
+          <h2>{{org.title}}</h2>
+          <p [ngStyle]="{'font-size':'18px'}">{{org.description}}</p>
+        </div>
+      </a>
+    </li>
+    <li *ngFor="let org of listOrganization">
+      <a [ngClass]="{catalog:true}" [routerLink]="['/pickpoints', org.id]">
+        <div [ngClass]="{imageContainer:true}">
+          <div [ngClass]="{imageWrapper:true}">
+            <div [ngClass]="{imageWrapperCommon:true}">
+              <img [ngClass]="{image:true}" src="{{org.picture}}" />
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="{textItem:true}">
+          <h2>{{org.title}}</h2>
+          <p [ngStyle]="{'font-size':'18px'}">{{org.description}}</p>
+        </div>
+      </a>
+    </li>
+    <li *ngFor="let org of listOrganization">
+      <a [ngClass]="{catalog:true}" [routerLink]="['/pickpoints', org.id]">
+        <div [ngClass]="{imageContainer:true}">
+          <div [ngClass]="{imageWrapper:true}">
+            <div [ngClass]="{imageWrapperCommon:true}">
+              <img [ngClass]="{image:true}" src="{{org.picture}}" />
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="{textItem:true}">
+          <h2>{{org.title}}</h2>
+          <p [ngStyle]="{'font-size':'18px'}">{{org.description}}</p>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>

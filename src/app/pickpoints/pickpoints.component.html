@@ -1,0 +1,25 @@
+<div [ngClass]="{container:true}">
+  <div *ngIf="organization">
+    <h1>Точки выдачи {{organization.title}}</h1>
+    <p [ngClass]="{info:true}">{{organization.description}}</p>
+  </div>
+  <ul>
+    <li *ngFor="let pickpoint of pickpoints">
+      <a [ngClass]="{catalog:true}" [routerLink]="['/menu', pickpoint.id]">
+        <div [ngClass]="{imageContainer:true}">
+          <div [ngClass]="{imageWrapper:true}">
+            <div [ngClass]="{imageWrapperCommon:true}">
+              <img [ngClass]="{image:true}" src="{{pickpoint.picture}}" />
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="{textItem:true}">
+          <h2>{{pickpoint.title}}</h2>
+          <p [ngClass]="{info:true}">{{pickpoint.address}}</p>
+          <p [ngClass]="{info:true}">{{pickpoint.openingHours}}</p>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+

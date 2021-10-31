@@ -1,0 +1,57 @@
+<div [ngClass]="{container:true}">
+  <div [ngClass]="{menuContainer:true}">
+    <div [ngClass]="{menuList:true}">
+      <div [ngClass]="{catalog:true}">
+        <div *ngIf="pickpoint">
+          <h1>Меню {{pickpoint.organization.title}}</h1>
+        </div>
+        <div>
+          <a [ngClass]="{categoryItem:true}" (click)="setCategory('0')">Все</a>
+          <a [ngClass]="{categoryItem:true}" (click)="setCategory(category.id)" *ngFor="let category of categories">{{category.title}}</a>
+        </div>
+        <ul>
+          <ng-container *ngFor="let dish of pickpoint.menu.dishes">
+            <li *ngIf="dish.category.id == category || category == '0'">
+              <a [ngClass]="{catalogItem:true}" (click)="addToCart(dish)">
+                <div [ngClass]="{imageContainer:true}">
+                  <div [ngClass]="{imageWrapper:true}">
+                    <div [ngClass]="{imageWrapperCommon:true}">
+                      <img [ngClass]="{image:true}" src="{{dish.picture}}" />
+                    </div>
+                  </div>
+                </div>
+                <div [ngClass]="{textItem:true}">
+                  <h2>{{dish.title}}</h2>
+                  <p [ngClass]="{info:true}">Вес: {{dish.weight}}</p>
+                  <p [ngClass]="{info:true}">Состав: {{dish.composition}}</p>
+                  <h2>Цена: {{dish.price}}р</h2>
+                </div>
+              </a>
+            </li>
+          </ng-container>
+        </ul>
+        <div>
+          <app-replies [pickpointId]="pickpoint.id"></app-replies>
+        </div>
+      </div>
+      <div [ngClass]="{cartWrapper:true}">
+        <div [ngClass]="{cartWithButton:true}">
+          <div [ngClass]="{cartTopLine:true}">
+            <h1>Козрина</h1>
+          </div>
+          <div [ngClass]="{cartItem:true}" *ngFor="let item of items">
+            <div [ngStyle]="{'flex':'1 1 50%'}">{{item.title}}</div>
+            <div [ngStyle]="{'flex':'1 1 10%'}" (click)="diminishQuantity(item.id)"><a>-</a></div>
+            <div [ngStyle]="{'flex':'1 1 10%'}">{{item.quantity}}</div>
+            <div [ngStyle]="{'flex':'1 1 10%'}" (click)="augmentQuantity(item.id)"><a>+</a></div>
+            <div [ngStyle]="{'flex':'1 1 10%'}">{{item.price}}</div>
+          </div>
+          <div [ngClass]="{cartBottomLine:true}">
+            <h2>Итого: {{total}}р</h2>
+          </div>
+          <button [ngClass]="{orderButton:true}" (click)="createOrder()">Оформить заказ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

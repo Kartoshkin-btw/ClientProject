@@ -1,0 +1,30 @@
+<div [ngClass]="{container:true}">
+  <div [ngClass]="{formHeader:true}">
+    <h1>Создание отзыва</h1>
+  </div>
+  <div>
+    <form [formGroup]="replyForm" (ngSubmit)="onSubmit()">
+      <div [ngClass]="{replyContainer:true}">
+        <!--
+        <mat-form-field [ngStyle]="{'width':'100%'}">
+          <input matInput placeholder="Рейтинг" formControlName="rating" />
+          <mat-hint *ngIf="replyForm.controls.rating.errors">Рейтинг должен быть от 1 до 5</mat-hint>
+        </mat-form-field>
+          -->
+          <mat-radio-group formControlName="rating">
+            <mat-radio-button value="1">1</mat-radio-button>
+            <mat-radio-button value="2">2</mat-radio-button>
+            <mat-radio-button value="3">3</mat-radio-button>
+            <mat-radio-button value="4">4</mat-radio-button>
+            <mat-radio-button value="5">5</mat-radio-button>
+          </mat-radio-group>
+        <mat-hint *ngIf="replyForm.controls.rating.errors">Выберите рейтинг</mat-hint>
+        <mat-form-field [ngStyle]="{'width':'100%'}">
+          <input matInput placeholder="Отзыв" formControlName="text" />
+          <mat-hint *ngIf="replyForm.controls.text.errors">Поле "Отзыв" пусто</mat-hint>
+        </mat-form-field>
+        <button [ngClass]="{formButton:true}" mat-flat-button type="submit">Оставить отзыв</button>
+      </div>
+    </form>
+  </div>
+</div>

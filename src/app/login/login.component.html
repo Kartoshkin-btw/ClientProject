@@ -1,0 +1,26 @@
+<div [ngClass]="{container:true}">
+  <div [ngClass]="{formHeader:true}">
+    <h1>Вход</h1>
+    <a [ngStyle]="{'margin-left':'auto'}" href="/registration">Регистрация</a>
+  </div>
+  <div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div [ngClass]="{loginContainer:true}">
+        <mat-form-field [ngStyle]="{'width':'100%'}">
+          <input matInput placeholder="Username" formControlName="username" />
+          <mat-hint *ngIf="loginForm.controls.username.errors">Username is required</mat-hint>
+        </mat-form-field>
+        <mat-form-field [ngStyle]="{'width':'100%'}">
+          <input matInput placeholder="Password" formControlName="password" type="password" />
+          <mat-hint *ngIf="loginForm.controls.password.errors">Password is required</mat-hint>
+        </mat-form-field>
+          <div [ngStyle]="{'margin-right':'auto'}" *ngIf="error">
+            <mat-hint [ngClass]="{error:true}">Неверное имя пользователя или пароль</mat-hint>
+          </div>
+        <button [ngClass]="{formButton:true}" mat-flat-button type="submit">Войти</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+

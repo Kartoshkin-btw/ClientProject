@@ -1,0 +1,18 @@
+<div [ngClass]="{container:true}">
+  <div>
+    <div [ngClass]="{cartTopLine:true}">
+      <h1>Создание заказа</h1>
+    </div>
+    <div [ngClass]="{cartItem:true}" *ngFor="let item of items">
+      <div [ngStyle]="{'flex':'1 1 50%'}">{{item.title}}</div>
+      <div [ngStyle]="{'flex':'1 1 10%'}" (click)="diminishQuantity(item.id)"><a>-</a></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}">{{item.quantity}}</div>
+      <div [ngStyle]="{'flex':'1 1 10%'}" (click)="augmentQuantity(item.id)"><a>+</a></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}">{{item.price}}</div>
+    </div>
+    <div [ngClass]="{cartBottomLine:true}">
+      <h2>Итого: {{total}}р</h2>
+    </div>
+    <button [ngClass]="{orderButton:true}" (click)="fillOrder()">Подтвердить</button>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div [ngClass]="{container:true}">
+  <div *ngIf="user">
+    <div [ngClass]="{formHeader:true}">
+      <h1>{{user.username}}</h1>
+      <a href="/editProfile">Редактировать</a>
+    </div>
+    <div [ngStyle]="{'margin-top':'30px'}">
+      <p>Имя: {{user.name}}</p>
+      <p>Телефон: {{user.phoneNumber}}</p>
+      <p>Email: {{user.email}}</p>
+    </div>
+  </div>
+  <button [ngClass]="{logoutButton:true}" mat-stroked-button color="warn" (click)="logout()">Выйти</button>
+  <div [ngClass]="{ordersContainer:true}">
+    <div [ngClass]="{cartTopLine:true}">
+      <h1>Текущие заказы</h1>
+    </div>
+    <div [ngClass]="{cartItem:true}">
+      <div [ngStyle]="{'flex':'1 1 20%'}"><p>Номер заказа</p></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"><p [ngStyle]="{'text-align':'center'}">Статус</p></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"><p [ngStyle]="{'text-align':'center'}">Время приготовления</p></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"><p [ngStyle]="{'text-align':'center'}">Дата</p></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"></div>
+    </div>
+    <div [ngClass]="{cartItem:true}" *ngFor="let order of orders">
+      <div [ngStyle]="{'flex':'1 1 20%'}"><p>{{order.number}}</p></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"><p [ngStyle]="{'text-align':'center'}">{{order.status}}</p></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"><p [ngStyle]="{'text-align':'center'}">{{getTime(order.preferedTime)}}</p></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"><p [ngStyle]="{'text-align':'center'}">{{getDate(order.date)}}</p></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"><a [ngStyle]="{'text-align':'center'}" [routerLink]="['/confirmed', order.number]">Подробнее</a></div>
+    </div>
+  </div>
+</div>

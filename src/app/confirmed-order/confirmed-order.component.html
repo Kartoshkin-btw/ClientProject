@@ -1,0 +1,27 @@
+<div [ngClass]="{container:true}">
+  <div *ngIf="order">
+    <h1>Заказ номер: {{order.number}}</h1>
+    <h2>Код подтверждения: {{order.pin}}</h2>
+    <div [ngClass]="{statusString:true}">
+      <p [ngStyle]="{'font-size':'18px'}">Статус: </p>
+      <p [ngStyle]="{'font-size':'18px', 'color': 'blue', 'padding-left':'5px'}"> {{order.status}}</p>
+    </div>
+    <p [ngStyle]="{'font-size':'18px'}">Комментарий: {{order.commentary}}</p>
+    <p [ngStyle]="{'font-size':'18px'}">Время приготовления: {{getTime(order.preferedTime)}}</p>
+  </div>
+  <div [ngClass]="{orderItemContainer:true}">
+    <div [ngClass]="{cartTopLine:true}">
+      <h1>Состав заказа</h1>
+    </div>
+    <div [ngClass]="{cartItem:true}">
+      <div [ngStyle]="{'flex':'1 1 50%'}">Название</div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"><p [ngStyle]="{'text-align':'center'}">Количество</p></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"><p [ngStyle]="{'text-align':'center'}">Цена</p></div>
+    </div>
+    <div [ngClass]="{cartItem:true}" *ngFor="let item of orderItems">
+      <div [ngStyle]="{'flex':'1 1 50%'}">{{item.dish.title}}</div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"><p [ngStyle]="{'text-align':'center'}">{{item.quantity}}</p></div>
+      <div [ngStyle]="{'flex':'1 1 10%'}"><p [ngStyle]="{'text-align':'center'}">{{item.dish.price}}</p></div>
+    </div>
+  </div>
+</div>

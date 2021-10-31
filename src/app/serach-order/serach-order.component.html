@@ -1,0 +1,9 @@
+<div [ngClass]="{container:true}">
+  <div [ngClass]="{searchContainer:true}">
+    <h1>Поиск заказа</h1>
+    <mat-form-field [ngStyle]="{'width':'100%'}">
+      <input matInput placeholder="Номер заказа" [(ngModel)]="orderId"/>
+    </mat-form-field>
+    <button [ngClass]="{searchButton:true}" mat-flat-button (click)="searchOrder()">Найти</button>
+  </div>
+</div>

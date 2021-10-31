@@ -1,0 +1,14 @@
+<div [ngClass]="{replyContainer:true}">  
+  <h1 *ngIf="rating">Рейтинг: {{rating}}</h1>
+  <div *ngIf="logIn">
+    <a [routerLink]="['/newReply', pickpointId]">Оставить отзыв</a>
+  </div>
+  <div *ngFor="let reply of replies" [ngClass]="{replyWrapper:true}">
+    <div [ngClass]="{replyBody:true}">
+      <h2>Рейтинг: {{reply.rating}}</h2>
+      <p [ngStyle]="{'font-size':'18px'}">Пользователь: {{reply.user.name}}</p>
+      <p [ngStyle]="{'font-size':'18px'}">Дата: {{getDate(reply.date)}}</p>
+      <p [ngStyle]="{'font-size':'18px'}">Отзыв: {{reply.text}}</p>
+    </div>
+  </div>
+</div>
